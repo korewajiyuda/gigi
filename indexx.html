@@ -1,0 +1,852 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>기술엔터마케팅 예상문제</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Layout: 시험지 + 채점용 빨간 펜. 위에서 아래로 기출 분석 → 답안 공식 → 암기 코드 → 예상문제 카드 → 분석형 */
+:root{
+  --bg:#F3F5F8; --surface:#FFFFFF; --ink:#172033; --muted:#5B6578; --line:#DCE1E9; --soft:#EEF1F6;
+  --pen:#C42B2B; --pen-soft:#FBE9E7; --accent:#2445B5; --accent-soft:#E7ECFB;
+  --c1:#2445B5; --c2:#B4531A; --c3:#17785A; --c4:#7438A0; --c5:#A21F55; --c6:#4A5568;
+  --font-ui:"IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --font-en:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#10131A; --surface:#181C25; --ink:#E6E9F0; --muted:#9AA3B3; --line:#2A303C; --soft:#1F2430;
+  --pen:#F2716A; --pen-soft:#3A1F21; --accent:#93A8FF; --accent-soft:#222B47;
+  --c1:#93A8FF; --c2:#F0A066; --c3:#5FD0A6; --c4:#C59AEA; --c5:#F08AB3; --c6:#AAB3C2; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10131A; --surface:#181C25; --ink:#E6E9F0; --muted:#9AA3B3; --line:#2A303C; --soft:#1F2430;
+  --pen:#F2716A; --pen-soft:#3A1F21; --accent:#93A8FF; --accent-soft:#222B47;
+  --c1:#93A8FF; --c2:#F0A066; --c3:#5FD0A6; --c4:#C59AEA; --c5:#F08AB3; --c6:#AAB3C2; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-ui);font-size:15px;line-height:1.65;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:44px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.3}
+h1{font-size:clamp(26px,5vw,36px);font-weight:700;letter-spacing:-.01em}
+h2{font-size:22px;font-weight:700;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+h2 .num{font-family:var(--font-mono);font-size:13px;color:var(--pen);letter-spacing:.06em}
+h3{font-size:16px;font-weight:700}
+p{margin:0}
+.muted{color:var(--muted)}
+.mono{font-family:var(--font-mono)}
+b,strong{font-weight:700}
+section{display:flex;flex-direction:column;gap:16px}
+
+header.top{display:flex;flex-direction:column;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:18px}
+.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.lede{max-width:66ch;color:var(--muted)}
+.lede b{color:var(--ink)}
+.stamp{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--pen);color:var(--pen);font-weight:700;
+  font-size:12px;padding:2px 8px;border-radius:3px;transform:rotate(-2deg);width:max-content}
+
+/* 기출 표 */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.04em;color:var(--muted);font-weight:600;background:var(--soft)}
+tr:last-child td{border-bottom:0}
+td .en{font-family:var(--font-en);font-size:15px}
+.rep{color:var(--pen);font-weight:700;white-space:nowrap}
+.chtag{display:inline-block;font-family:var(--font-mono);font-size:11.5px;font-weight:600;padding:1px 7px;border-radius:3px;
+  border:1px solid currentColor;white-space:nowrap}
+.ch1{color:var(--c1)}.ch2{color:var(--c2)}.ch3{color:var(--c3)}.ch4{color:var(--c4)}.ch5{color:var(--c5)}.chA{color:var(--c6)}
+
+.findings{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.finding{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.finding .k{font-family:var(--font-mono);font-size:12px;color:var(--pen);font-weight:600}
+.predict{background:var(--surface);border:1.5px solid var(--ink);border-radius:6px;padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.predict ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.odds{font-family:var(--font-mono);font-size:12px;font-weight:600;padding:0 6px;border-radius:3px;margin-left:4px}
+.o-hi{background:var(--pen-soft);color:var(--pen)}
+.o-mid{background:var(--accent-soft);color:var(--accent)}
+
+/* 답안 공식 */
+.formula{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.fbox{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.steps{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none;counter-reset:s}
+.steps li{display:grid;grid-template-columns:26px 1fr;gap:8px;align-items:start}
+.steps li::before{counter-increment:s;content:counter(s);font-family:var(--font-mono);font-size:12px;font-weight:600;
+  width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--surface);margin-top:2px}
+.steps .en{font-family:var(--font-en);font-style:italic;color:var(--muted)}
+.tip{border-left:3px solid var(--pen);padding:8px 12px;background:var(--pen-soft);border-radius:0 4px 4px 0;font-size:14px}
+
+/* 암기 코드 */
+.codes{display:flex;flex-direction:column;gap:18px}
+.codegroup{display:flex;flex-direction:column;gap:8px}
+.codegroup h3{display:flex;gap:8px;align-items:center}
+.codegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:10px}
+.code{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.code .head{display:flex;justify-content:space-between;gap:8px;align-items:baseline;flex-wrap:wrap}
+.code .t{font-weight:700;font-size:14px}
+.code .sl{font-family:var(--font-mono);font-size:11.5px;color:var(--muted);white-space:nowrap}
+.code .m{font-family:var(--font-mono);font-weight:600;font-size:15px;color:var(--pen);letter-spacing:.01em;overflow-wrap:anywhere}
+.code .items{font-family:var(--font-en);font-size:14px;line-height:1.5;color:var(--ink)}
+.code .items i{color:var(--muted)}
+
+/* 필터 바 */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:10px;border-bottom:1px solid var(--line);
+  display:flex;flex-direction:column;gap:8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--ink);
+  padding:4px 11px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.chip:focus-visible,.btn:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.barrow{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between}
+.btn{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--ink);background:transparent;color:var(--ink);padding:4px 11px;border-radius:4px;cursor:pointer}
+.progress{font-family:var(--font-mono);font-size:12.5px;color:var(--muted)}
+.progress b{color:var(--pen)}
+.toggle{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);cursor:pointer}
+
+/* 문제 카드 */
+#list{display:flex;flex-direction:column;gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 18px;display:flex;flex-direction:column;gap:10px;min-width:0;
+  border-left:4px solid var(--cc)}
+.card.done{opacity:.62}
+.card .meta{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;font-size:12.5px}
+.pri{font-family:var(--font-mono);font-size:11.5px;font-weight:600;padding:1px 7px;border-radius:3px}
+.pri.S{background:var(--pen);color:var(--surface)}
+.pri.A{background:var(--accent-soft);color:var(--accent)}
+.pri.B{background:var(--soft);color:var(--muted)}
+.gichul{color:var(--pen);font-weight:700;font-size:12.5px}
+.slides{font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.qid{font-family:var(--font-mono);font-size:12px;color:var(--muted);margin-left:auto}
+.q{font-family:var(--font-en);font-size:18px;line-height:1.45;font-weight:600}
+.ko{font-size:13.5px;color:var(--muted)}
+.cue{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:13.5px;background:var(--soft);border-radius:4px;padding:10px 12px}
+.cue dt{font-weight:700;color:var(--muted);font-size:12px;padding-top:2px;white-space:nowrap}
+.cue dd{margin:0;min-width:0}
+.cue .m{font-family:var(--font-mono);font-weight:600;color:var(--pen)}
+details.ans{border-top:1px dashed var(--line);padding-top:8px}
+details.ans summary{cursor:pointer;font-weight:600;font-size:13.5px;color:var(--accent);list-style:none;display:flex;gap:6px;align-items:center}
+details.ans summary::-webkit-details-marker{display:none}
+details.ans summary::before{content:"▸";font-size:12px;transition:transform .15s}
+details.ans[open] summary::before{transform:rotate(90deg)}
+.answer{font-family:var(--font-en);font-size:16px;line-height:1.7;display:flex;flex-direction:column;gap:10px;margin-top:10px;max-width:72ch}
+.answer b{background:linear-gradient(transparent 62%,var(--pen-soft) 62%);font-weight:600}
+.answer .lab{font-family:var(--font-ui);font-size:12px;font-weight:700;color:var(--pen);letter-spacing:.03em;margin-right:4px}
+.note{font-family:var(--font-ui);font-size:13px;color:var(--muted);border-left:2px solid var(--line);padding-left:10px}
+.cardfoot{display:flex;justify-content:flex-end}
+.chk{display:inline-flex;gap:6px;align-items:center;font-size:13px;color:var(--muted);cursor:pointer}
+.chk input{width:16px;height:16px;accent-color:var(--pen)}
+.empty{padding:24px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:6px}
+
+/* 단서표 */
+.cuemap td:first-child{width:44%}
+footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+@media (max-width:520px){.bar{position:static}.q{font-size:16.5px}.answer{font-size:15px}.cue{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="top">
+  <span class="eyebrow">Technology &amp; Entertainment Marketing · 중간고사 대비</span>
+  <h1>기술엔터테인먼트마케팅 예상문제</h1>
+  <p class="lede">기출 2개년(24-2, 25-2)을 슬라이드와 맞춰 보고 CH01–CH05에서 나올 문항을 골랐습니다. 모든 문항에 <b>챕터·슬라이드 번호</b>, 목록 <b>암기 코드</b>, 답안 <b>뼈대</b>, 그대로 써도 되는 <b>영어 모범답안</b>이 있습니다. 답안은 기본으로 접혀 있으니 먼저 써 보고 펼쳐서 맞춰 보세요.</p>
+  <span class="stamp">★ = 기출 · S/A/B = 출제 가능성</span>
+</header>
+
+<!-- 1. 기출 분석 -->
+<section id="analysis">
+  <h2><span class="num">01</span>기출 분석: 교수님은 이렇게 내신다</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>학기</th><th>기출 문항</th><th>범위</th><th>유형</th></tr></thead>
+      <tbody>
+        <tr><td>25-2</td><td class="en">Explain the key engines to make winner-take-all mechanism in high-tech industry.</td><td><span class="chtag ch2">CH02 S10–16</span></td><td><span class="rep">2년 연속</span></td></tr>
+        <tr><td>25-2</td><td class="en">Explain the marketing process of traditional marketing.</td><td><span class="chtag ch1">CH01 S13</span></td><td><span class="rep">2년 연속</span></td></tr>
+        <tr><td>25-2</td><td class="en">Explain the technology adoption life cycle and the main sources of chasm.</td><td><span class="chtag ch3">CH03 S8–23</span></td><td>목록 암기</td></tr>
+        <tr><td>25-2</td><td class="en">Explain the sources of market uncertainty in the high-tech industry.</td><td><span class="chtag ch1">CH01 S30</span></td><td>목록 암기</td></tr>
+        <tr><td>25-2</td><td class="en">Explain why large firms are usually vulnerable to disruptive innovation.</td><td><span class="chtag ch4">CH04 S12–13</span></td><td>목록 암기</td></tr>
+        <tr><td>25-2</td><td class="en">Read the following article and analyze the decision of Anthropic. (외부지문)</td><td><span class="chtag chA">통합</span></td><td>기사 분석</td></tr>
+        <tr><td>24-2</td><td>승자독식의 개념과 주요 동력</td><td><span class="chtag ch2">CH02 S10–16</span></td><td><span class="rep">2년 연속</span></td></tr>
+        <tr><td>24-2</td><td>경쟁우위의 개념과 전략</td><td><span class="chtag ch5">경쟁 챕터</span></td><td>개념+전략</td></tr>
+        <tr><td>24-2</td><td>전통적 마케팅 과정</td><td><span class="chtag ch1">CH01 S13</span></td><td><span class="rep">2년 연속</span></td></tr>
+        <tr><td>24-2</td><td>하이테크·엔터 산업에서 전통적 마케팅이 아닌 새로운 마케팅 전략이 필요한 이유</td><td><span class="chtag ch1">CH01 S34–38</span></td><td>목록 암기</td></tr>
+        <tr><td>24-2</td><td>(응용) AI·뇌파 기술 관광 상품을 만든 친구에게 초기 → 상용화 단계로 넘어가는 마케팅 조언</td><td><span class="chtag ch3">CH03 S30–45</span></td><td>시나리오 응용</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="findings">
+    <div class="finding"><span class="k">패턴 1 · 형식</span><p>전부 <b>영어 논술형 5–6문항</b>. 문제 문장은 거의 다 <i>"Explain …"</i>로 시작하고 슬라이드 제목을 그대로 씁니다.</p></div>
+    <div class="finding"><span class="k">패턴 2 · 반복</span><p><b>승자독식 엔진</b>과 <b>전통적 마케팅 과정</b>은 2년 연속 나왔습니다. 올해도 가장 먼저 외울 두 문항입니다.</p></div>
+    <div class="finding"><span class="k">패턴 3 · 배분</span><p>챕터마다 1문항씩 내고, <b>CH01만 2문항</b>입니다. CH01 두 번째 자리는 해마다 바뀝니다(새 마케팅 필요성 → 시장 불확실성).</p></div>
+    <div class="finding"><span class="k">패턴 4 · 채점 포인트</span><p>슬라이드의 <b>목록 개수와 영어 표현</b>을 묻습니다(sources 5, engines 6, dilemma 4). 항목을 빠뜨리지 않는 게 핵심입니다.</p></div>
+    <div class="finding"><span class="k">패턴 5 · 응용</span><p>마지막 1문항은 <b>실제 기업 기사나 가상 창업 사례</b>에 개념을 적용합니다. 작년엔 Anthropic이었고, 교수님이 AI 사례를 계속 쓰셔서 올해도 AI·플랫폼 기업일 가능성이 큽니다.</p></div>
+    <div class="finding"><span class="k">패턴 6 · 경쟁 챕터</span><p>24년엔 "경쟁우위"가 나왔습니다. 올해 경쟁 챕터(CH04 표준전쟁·파괴적 혁신, CH05 플랫폼·제휴·M&amp;A)에서 1문항이 나올 수 있습니다.</p></div>
+  </div>
+
+  <div class="predict">
+    <h3>2026 중간고사 6자리 예측</h3>
+    <ol>
+      <li><b>CH02</b> 승자독식 엔진 6개 <span class="odds o-hi">매우 높음</span> 3년 연속 노림. 못 나오면 late movers' strategy 5</li>
+      <li><b>CH01</b> 전통적 마케팅 과정 <span class="odds o-hi">매우 높음</span></li>
+      <li><b>CH01</b> 두 번째 자리: technological uncertainty 5, traditional vs high-tech 8쌍, desperate needs 5 중 하나 <span class="odds o-mid">높음</span></li>
+      <li><b>CH03</b> TALC + chasm, 또는 crossing the chasm / early market 조건 <span class="odds o-hi">높음</span></li>
+      <li><b>CH04</b> innovator's dilemma, 또는 standard war weapons·tactics <span class="odds o-hi">높음</span></li>
+      <li><b>분석형</b> 기사(AI·플랫폼 기업) 또는 창업 시나리오 <span class="odds o-hi">확정</span>. CH05가 범위에 들어가면 플랫폼 개념이 분석형이나 별도 문항으로 들어올 수 있습니다</li>
+    </ol>
+  </div>
+</section>
+
+<!-- 2. 답안 공식 -->
+<section id="formula">
+  <h2><span class="num">02</span>답안 쓰는 공식</h2>
+  <div class="formula">
+    <div class="fbox">
+      <h3>암기형 "Explain …" 4단계</h3>
+      <ol class="steps">
+        <li><div><b>Definition</b> 첫 문장에 정의를 슬라이드 영어 그대로. <span class="en">"Market uncertainty is ambiguity about…"</span></div></li>
+        <li><div><b>List</b> 개수부터 밝히고 목록 전체를 먼저. <span class="en">"There are five sources: …"</span></div></li>
+        <li><div><b>Explain + Example</b> 항목마다 한 문장 + 수업 사례 하나. <span class="en">"First, … For example, …"</span></div></li>
+        <li><div><b>Implication</b> 하이테크 마케팅에 주는 의미 한 문장. <span class="en">"Therefore, …"</span></div></li>
+      </ol>
+    </div>
+    <div class="fbox">
+      <h3>분석형(기사·시나리오) 5단계</h3>
+      <ol class="steps">
+        <li><div><b>Decision</b> 기업이 무엇을 결정했나 한 문장</div></li>
+        <li><div><b>Diagnosis</b> 어떤 시장인가: 2x2 위치, 승자독식 여부, 캐즘 단계</div></li>
+        <li><div><b>Concepts</b> 개념 2–3개를 <u>이름 그대로</u> 쓰고 기사 속 사실과 연결</div></li>
+        <li><div><b>Evaluation</b> 그 결정이 개념상 맞는가, 근거는</div></li>
+        <li><div><b>Risk &amp; Recommendation</b> 남은 위험 하나, 제언 하나</div></li>
+      </ol>
+    </div>
+  </div>
+  <p class="tip">시간이 모자라면 <b>목록부터 답안 맨 위에 적고</b> 살을 붙이세요. 채점은 항목 누락을 먼저 봅니다. 문장은 짧게(주어+동사+목적어), 문법보다 키워드가 점수입니다.</p>
+</section>
+
+<!-- 3. 암기 코드 -->
+<section id="codes">
+  <h2><span class="num">03</span>목록 암기 코드</h2>
+  <p class="muted">빨간 글씨가 외울 코드입니다. 코드 → 영어 항목 순서로 떠올리는 연습을 하면 답안 목록이 바로 나옵니다.</p>
+  <div class="codes" id="codeRoot"></div>
+</section>
+
+<!-- 4. 예상문제 -->
+<section id="questions">
+  <h2><span class="num">04</span>예상문제와 모범답안</h2>
+  <div class="bar" role="region" aria-label="문항 필터">
+    <div class="chips" id="chFilter"></div>
+    <div class="barrow">
+      <div class="chips" id="priFilter"></div>
+      <div class="chips">
+        <button class="btn" id="openAll" type="button">답안 모두 펼치기</button>
+        <label class="toggle"><input type="checkbox" id="hideDone"> 외운 문항 숨기기</label>
+      </div>
+    </div>
+    <div class="progress" id="progress"></div>
+  </div>
+  <div id="list"></div>
+</section>
+
+<!-- 5. 분석형 단서표 -->
+<section id="cues">
+  <h2><span class="num">05</span>기사에 이게 나오면 이 개념</h2>
+  <p class="muted">분석형은 기사 속 사실 하나에 개념 이름 하나를 붙이는 게 핵심입니다. 문장을 읽다가 왼쪽 상황이 보이면 오른쪽 개념을 이름 그대로 쓰세요.</p>
+  <div class="tablewrap">
+    <table class="cuemap">
+      <thead><tr><th>기사 속 상황</th><th>쓸 개념 (챕터·슬라이드)</th></tr></thead>
+      <tbody>
+        <tr><td>"우리 기술이 더 좋다"며 1등을 따라잡겠다</td><td>Better mousetrap fallacy <span class="chtag ch1">CH01 S37</span> · Drucker's rule 10배 <span class="chtag ch2">CH02 S8</span> · 배달통</td></tr>
+        <tr><td>무료·학생 할인·적자 감수 확산</td><td>How to build installed base early 4 · positive feedback <span class="chtag ch2">CH02 S19–25</span> · penetration pricing <span class="chtag ch4">CH04 S39</span></td></tr>
+        <tr><td>기술·프로토콜·포맷을 개방하거나 무료로 공개</td><td>Standard war: de facto standard, weapons 7, tactics 4 <span class="chtag ch4">CH04 S35–39</span> · Sony/SD, Gopher/HTTP</td></tr>
+        <tr><td>1등 뒤에 늦게 들어와서 다른 시장·다른 고객을 노림</td><td>Late movers' strategy 5, changing the domain <span class="chtag ch2">CH02 S35–54</span></td></tr>
+        <tr><td>화제였는데 판매가 꺾임 / 광고·가격 인하로 대응</td><td>Chasm symptoms 3, typical reactions 3 <span class="chtag ch3">CH03 S30–31</span></td></tr>
+        <tr><td>특정 직업·용도에 집중, 서비스·연동 보강</td><td>Focus, whole product, elevator test, bowling alley <span class="chtag ch3">CH03 S32–47</span></td></tr>
+        <tr><td>개인정보·안전·효과 논란</td><td>FUD factors <span class="chtag ch3">CH03 S26</span> · technological uncertainty <span class="chtag ch1">CH01 S27</span></td></tr>
+        <tr><td>대기업이 신기술을 머뭇거림, 기존 고객 말만 들음</td><td>Innovator's dilemma 4, common lies 4 <span class="chtag ch4">CH04 S12–13</span> · incumbent inertia <span class="chtag ch2">CH02 S34</span></td></tr>
+        <tr><td>성능은 낮지만 싸고 편한 신제품</td><td>Disruptive vs sustaining, overshooting <span class="chtag ch4">CH04 S5–9</span></td></tr>
+        <tr><td>앱스토어·생태계·개발자·양쪽 고객</td><td>Platform KSF, multi-sided market, catalyst product, indirect network effect <span class="chtag ch5">CH05 S11–20</span></td></tr>
+        <tr><td>한쪽엔 무료, 다른 쪽에 과금</td><td>Subsidy side vs payment side <span class="chtag ch5">CH05 S18–20</span></td></tr>
+        <tr><td>규제 당국 반대, 금융·의료 서비스</td><td>Platform scaling (regulatory complexity × risk) <span class="chtag ch5">CH05 S25–26</span> · government regulation <span class="chtag ch1">CH01 S4</span></td></tr>
+        <tr><td>다른 회사와 제휴·공동개발</td><td>Relationship continuum, partnering for what, which partner <span class="chtag ch5">CH05 S28–40</span></td></tr>
+        <tr><td>스타트업 인수</td><td>A&amp;D replaces R&amp;D, Mario rule, focus of M&amp;A <span class="chtag ch5">CH05 S41–46</span></td></tr>
+        <tr><td>예상 못 한 업종이 경쟁자로 등장</td><td>Competitive volatility <span class="chtag ch1">CH01 S31</span> · Netflix vs Fortnite</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  CH01–CH04의 슬라이드 번호와 교수님 사례는 공부 자료(CH01–02, CH03–04 정리본)와 수업 녹음 기준입니다. CH05는 수업 녹음이 없어 슬라이드 내용과 널리 알려진 사례(Amazon–Toys"R"Us, Toyota–BMW, Libra)로 답안을 썼으니, 수업에서 교수님이 든 사례가 있으면 그걸로 바꿔 쓰세요. 외운 문항 체크는 이 브라우저에만 저장됩니다.
+</footer>
+</div>
+
+<script>
+const CH = {
+  "1":{name:"CH01 High-Tech Marketing",cls:"ch1",col:"var(--c1)"},
+  "2":{name:"CH02 Winner-Take-All",cls:"ch2",col:"var(--c2)"},
+  "3":{name:"CH03 Chasm",cls:"ch3",col:"var(--c3)"},
+  "4":{name:"CH04 Disruption & Standard War",cls:"ch4",col:"var(--c4)"},
+  "5":{name:"CH05 Competition Dynamics",cls:"ch5",col:"var(--c5)"},
+  "A":{name:"분석형",cls:"chA",col:"var(--c6)"}
+};
+
+/* ---------- 암기 코드 ---------- */
+const CODES = {
+"1":[
+ ["Marketing process","S13","이·설·창·관·회","Understand needs (<b>3C</b>) → Design strategy (<b>STP</b>) → Create value (<b>4P</b>) → Manage relations → Capture value <i>(profits &amp; customer equity)</i>"],
+ ["Sources of market uncertainty — 5","S30","NC + 3S","<b>N</b>eeds met by new tech? · How will needs <b>C</b>hange? · industry <b>S</b>tandards? · <b>S</b>peed of spread? · <b>S</b>ize of potential market?"],
+ ["Sources of technological uncertainty — 5","S27","기·부·서·납·구","<b>기</b>능 Function as promised? · <b>부</b>작용 Side-effects? · <b>서</b>비스 Vendor service? · <b>납</b>기 Delivery time? · <b>구</b>식화 Make ours obsolete?"],
+ ["Competitive volatility — 3","S31","누가·어떻게·무엇과","<b>Who</b> will be the new competition? · What competitive <b>tactics</b>? · What <b>products</b> will we compete with?"],
+ ["Moriarty &amp; Kosnik 2x2","S26","쥐덫=기술↑ · 패션=시장↑","Low-tech (L/L) · Better mousetrap (Tech H) · High-fashion (Market H) · High-tech (H/H)"],
+ ["Desperate needs of new marketing — 5","S34–36","포인(태) 제시","<b>P</b>orter strategy ends · <b>I</b>nterface of tech &amp; marketing · a<b>T</b>titude change of customers · focusing <b>P</b>roduct concept · <b>T</b>ime as strategic resource"],
+ ["Traditional vs high-tech — 8쌍","S38","무엇2·방식2·동력2·결과2","existing/new market · existing/new products | discovery/creation · continuous/discontinuous | market pull/tech push &amp; pull · reactive/proactive | long/short life cycle · red/blue ocean"],
+ ["Goals of marketing — 3","S8","끌·키·되","<b>Attract</b> new (superior value) · <b>Keep &amp; grow</b> current (satisfaction) · <b>Regain</b> those who left (fix relationship)"],
+ ["Full of uncertainty — 8","S4","경·가·미·돈·규·기·사·안","competition · core value · future trend · monetary values · government regulation · technology · privacy · safety"]
+],
+"2":[
+ ["Key engines of winner-take-all — 6","S10–16","No Lazy Student Can Skip Units","<b>N</b>etwork externalities · <b>L</b>earning by using · <b>S</b>ignaling · <b>C</b>onvergence <i>(technological interrelatedness)</i> · <b>S</b>witching cost · <b>U</b>nique cost structures"],
+ ["Switching cost — 3","S15","돈·절차·관계","Financial · Procedural · Relational"],
+ ["Unique cost structures — 2","S16","크게 시작, 0에 수렴","High initial investment · Low marginal cost"],
+ ["Decreasing vs increasing returns","S5–6","제한 vs 앞선 자가 더 앞섬","Marshall: limitations · market sharing · zero-sum · <i>optimization</i> / New economy: further ahead · cornering · lock-in · win-win · <i>adaption &amp; next big thing</i>"],
+ ["Build installed base early — 4","S25","할·생·일·공","Discounted pricing · mini-Ecology for positive feedback · psychological positioning as #1 · Freeconomics"],
+ ["Key strategic insights — 3","S32","승자독식·빨리·다음 판","WTA under increasing returns · build initial user base ASAP &amp; positive feedback loop · next big thing &gt; effective management"],
+ ["First-mover disadvantages — 4","S34","무임·해소·변화·관성","Free-rider effects · Resolution of tech/market uncertainty · Shift in tech or needs · Incumbent inertia (producer lock-in)"],
+ ["Late movers' strategy — 5","S35–54","This Is Still Possible, Later","<b>T</b>ime · <b>I</b>nnovation · <b>S</b>witching cost · <b>P</b>ower user · <b>L</b>ocal network"],
+ ["Innovation — 3","S43","제품·공정·BM","Production · Process · Business model innovation"]
+],
+"3":[
+ ["Technology adoption life cycle — 5","S8–21","2.5 · 13.5 · 34 · 34 · 16","Innovators <i>Try it!</i> · Early adopters = visionaries <i>Get ahead of the herd</i> · Early majority = pragmatists <i>Stick with the herd</i> · Late majority = conservatives <i>Hold on!</i> · Laggards = skeptics <i>No way!</i>"],
+ ["Source of chasm — 8쌍 (V vs P)","S23","생각·취향·무리·판단·위험·시간·방식·시선","intuitive/analytic · love innovations/evolutions · go out of/in herds · own judgement/others' guides · risk-takers/minimizing risk · future/current issues · small opportunities/rigid ways · P는 losers, V는 gangsters"],
+ ["Dimensions of innovation — 3","S4","혜·기·행","Product benefit · Technological capability · Behavior change"],
+ ["Early market necessary — 3","S25","WIKi","<b>W</b>OW factor (breakthrough tech) · <b>I</b>nnovators exist · <b>K</b>iller application for early adopters"],
+ ["Early market sufficient — 3","S26","PEF","<b>P</b>ositioning &amp; framing · <b>E</b>xpectation management &amp; WOM · eliminating <b>F</b>UD"],
+ ["FUD","S26","F 3 · U 3 · D 2","Fear: learning, additional cost, privacy · Uncertainty: price, service, standard · Doubt: functions, quality"],
+ ["Chasm 증상 3 / 흔한 반응 3","S30–31","시장·초점·현금 / 광·신·가","market disappeared · lost strategy focus · shortage of cash / mass marketing · new products · changing the price → 모두 실패"],
+ ["Crossing the chasm — 5","S32–45","Five Very Wise Chasm Escapes","<b>F</b>ocus, focus, focus · <b>V</b>alue triad &amp; scenario · <b>W</b>hole product · <b>C</b>ompetition positioning · <b>E</b>levator test"],
+ ["Whole product — 4층","S41–43","기본·기대·증강·잠재","Generic → Expected → Augmented → Potential"],
+ ["Bowling alley / Tornado","S46–51","보상2·실패3 / 펭귄·Just ship","money, credit &amp; reputation · rushed, satisfied in niche, too complex / penguin effect · gathering customers · just ship · standardization &amp; simplification"]
+],
+"4":[
+ ["Innovator's dilemma — 4","S12","고·작·분·다","depend on <b>고</b>객 customers &amp; investors · <b>작</b>은 small markets don't solve growth · <b>분</b>석 불가 markets that don't exist · <b>다</b> not all emerging markets prosper"],
+ ["Common lies — 4","S13","안·위·주·준","stable &amp; safe · too risky · shareholders won't allow · not ready"],
+ ["Disruptive characteristics — 4","S8","싸·쉽·작·편","Cheap · Simple · Small · Convenient (champion's action: overshooting)"],
+ ["How to know it's disruptive — 5","S9","타·반·속·네·공","Target market · Response of champion · Speed · new value Network incl. distribution · coexistence(공존) of previous firms"],
+ ["What can be done (big firm) — 5","S17","D-D-L-P-K","Determine · Define significance · Locate initial market · Place in independent org · Keep it independent"],
+ ["Disruption types — 3","S20","더 좋게·더 싸게·안 쓰던 사람","Sustaining · Low-end (overserved) · New-market (nonconsumption)"],
+ ["Reverse innovation — 3","S22","기술X·시장X·쉽고 싸게","exclude tech uncertainty (proven tech) · exclude market uncertainty (less developed countries) · easy &amp; cheap"],
+ ["How standard changes the game — 4","S35","네·불·믹·규","Network externalities · reduced Uncertainty · Mix &amp; match (compete within) · economy of scale &amp; learning cost"],
+ ["How standards are determined — 5","S36","내·합·국·정·시","Internal · Mutual agreement · International org · Government · Market competition (de facto)"],
+ ["Weapons in standard war — 7","S38","3I + FMCB","Installed base · IP rights · Innovate ability · First-mover · Manufacturing · Complements · Brand"],
+ ["Tactics in standard war — 4","S39","P·P·E·P","Preemption · Penetration pricing · Expectation management · Partnership"]
+],
+"5":[
+ ["Strategic meaning of platform — 3","S8","리더·성장·락인","Source of market leadership · Sustainable growth · Positive feedback &amp; lock-in through WTA"],
+ ["Platform models","S9","통제 ↔ 자율","Integrator · Product · Two-sided platform (Boudreau &amp; Lakhani 2009)"],
+ ["Platform KSF — 3","S11","P·U·E","innovative <b>P</b>roducts (Google Maps) · rapid <b>U</b>ser base (Facebook, Netflix) · <b>E</b>cosystem (revenue model, catalyst, two-sided, indirect NE)"],
+ ["Platform company 4 steps","S12","제·비·전·막","distinctive products &amp; many customers · BM to create &amp; share value · convert customers to platform users · prevent imitation (+ pricing, compatibility)"],
+ ["Multi-sided strategic decisions — 4","S17–18","몇·뭘·누구 돈·룰","How many sides? · What value? · Who pays / who gets subsidy? · What rules?"],
+ ["Reseller is better — 5","S16","통·수·재·경·실","control needed · high demand · high resale value · supplier &amp; user experience · market failure risk"],
+ ["Initial growth — 3 steps","S21–22","공급자 고르기 → 경험 → 때·장소","Chicken-and-egg: service side first, but the right providers"],
+ ["Network characteristics — 5","S23","SC-DMB","<b>S</b>trength of NE · <b>C</b>lustering · <b>D</b>isintermediation risk · <b>M</b>ulti-homing · <b>B</b>ridging"],
+ ["Platform scaling","S25","복잡↑ + 위험↑ 만 천천히","regulatory complexity × regulatory risk → only high/high scale slowly"],
+ ["Dealing with powerful platforms — 4","S27","필·차·대·직","exploit need for completeness · discredit discrimination · alternative platform · deal directly"],
+ ["Relationship continuum — 4","S28","거래·서비스·파트너·합병","Transactional · Serving · Partnership · Unification"],
+ ["Partnering for what — 4","S29","돈·기반·완제품·Wintel","bottom-line synergies · installed base/NE · whole product · value networking"],
+ ["Which partner — 5","S40","3R + 2C","Resources · Relationships · Reputation · Capabilities · Chemistry &amp; culture"],
+ ["Cisco Mario rule — 5","S43","3년·사람·가까이·3개월·6개월","demand within 3 yrs · tech + people · near HQ · integrate in 3 months · results in 6 months"],
+ ["Focus of M&amp;A — 3","S45","C·P·D","Capability · People · Due diligence"]
+]};
+
+const codeRoot=document.getElementById('codeRoot');
+for(const k of Object.keys(CODES)){
+  const g=document.createElement('div');g.className='codegroup';
+  g.innerHTML=`<h3><span class="chtag ${CH[k].cls}">CH0${k}</span>${CH[k].name.replace(/^CH0\d /,'')}</h3>`;
+  const grid=document.createElement('div');grid.className='codegrid';
+  for(const [t,s,m,items] of CODES[k]){
+    const c=document.createElement('div');c.className='code';
+    c.innerHTML=`<div class="head"><span class="t">${t}</span><span class="sl">CH0${k} ${s}</span></div><div class="m">${m}</div><div class="items">${items}</div>`;
+    grid.appendChild(c);
+  }
+  g.appendChild(grid);codeRoot.appendChild(g);
+}
+
+/* ---------- 예상문제 ---------- */
+const Q = [
+/* ===== CH01 ===== */
+{id:"1-1",ch:"1",pri:"S",g:"★ 24·25 기출 (2년 연속)",sl:"CH01 S13–20",
+ q:"Explain the marketing process of traditional marketing.",
+ ko:"전통적 마케팅 과정을 설명하라.",
+ code:"이·설·창·관·회 = 3C → STP → 4P → Relations → Capture",
+ frame:"정의(Winer·Kotler) → 5단계 목록 → 3C·STP·4P 설명+사례 → 관계 → 가치 회수 → 하이테크 한계",
+ ans:`<p>Marketing is <b>all the activities affecting customers' choice</b> (Russell Winer), and Kotler defines it as <b>managing profitable customer relationships</b>. The traditional marketing process has <b>five steps</b>: 3C, STP, 4P, managing relations, and capturing value.</p>
+<p>First, the firm <b>understands customer needs through 3C</b>: Customer (needs, wants, and behaviors), Competitor (what rivals are doing), and Company (its own strengths, weaknesses, and capabilities).</p>
+<p>Second, it <b>designs a marketing strategy through STP</b>. Segmentation divides the total market into smaller segments that are <b>MECE</b> (mutually exclusive, collectively exhaustive). Targeting selects the segment to enter. Differentiation and positioning decide the <b>value proposition</b> and place the offering in the minds of target customers.</p>
+<p>Third, it <b>creates value through the marketing mix (4P)</b>: Product, Price, Place, and Promotion. For example, Apple sells the iPhone in Apple Stores because the place itself delivers premium value.</p>
+<p>Fourth, it <b>manages customer relationships</b> to keep, grow, and regain customers. Finally, it <b>captures value from customers to create profits and customer equity</b>. A famous ad that nobody links to the brand fails this last step.</p>
+<p>This process assumes that customers already know what they want. Therefore, it works in existing markets with low uncertainty, but it is <b>not enough for new high-tech markets</b>.</p>`},
+
+{id:"1-2",ch:"1",pri:"S",g:"★ 25 기출",sl:"CH01 S30",
+ q:"Explain the sources of market uncertainty in the high-tech industry.",
+ ko:"하이테크 산업에서 시장 불확실성의 원천을 설명하라.",
+ code:"NC + 3S = Needs · Change · Standards · Speed · Size",
+ frame:"정의 → 5개 질문형 목록 → 각 사례(ChatGPT·두쫀쿠·USB-C·VR·시장 규모) → 결론: create the market",
+ ans:`<p>Market uncertainty is <b>ambiguity about the type and extent of customer needs that can be satisfied by the technology</b>. There are <b>five sources</b>.</p>
+<p>First, <b>what needs might be met by new technology?</b> AI could recognize cats and play Go, but nobody knew how big the demand for conversation was until ChatGPT appeared.</p>
+<p>Second, <b>how will needs change in the future?</b> Shops that stocked pistachios for three months during the Dubai cookie boom lost money when the trend suddenly ended.</p>
+<p>Third, <b>will the market adopt industry standards?</b> After chargers were unified to USB-C, products with other formats stopped selling.</p>
+<p>Fourth, <b>how fast will the innovation spread?</b> AI spread very fast, while VR and AR spread slowly even though they were interesting.</p>
+<p>Fifth, <b>how large is the potential market?</b> The market may be tiny or huge, so it is hard for a firm to commit all its resources.</p>
+<p>Because of these uncertainties, a high-tech firm cannot forecast sales as an air-conditioner maker does. It has to <b>create the market, not just discover it</b>.</p>`},
+
+{id:"1-3",ch:"1",pri:"S",g:"★ 24 기출",sl:"CH01 S34–38",
+ q:"Why do the high-tech and entertainment industries need a new marketing strategy instead of traditional marketing?",
+ ko:"하이테크·엔터 산업에서 전통적 마케팅이 아닌 새로운 마케팅 전략이 필요한 이유.",
+ code:"포인(태) 제시 = Porter · Interface · aTtitude · Product concept · Time",
+ frame:"불확실성이 크다 → desperate needs 5 → 대비 3쌍(창조·proactive·blue ocean) → 결론",
+ ans:`<p>High-tech and entertainment products are <b>full of uncertainty</b>, both technological and market uncertainty, so traditional marketing is not enough. There are <b>five reasons</b> why new marketing is needed.</p>
+<p>First, <b>the end of Porter strategy</b>. The traditional "divide and own" strategy is losing efficiency. In a new market there is no place for segmentation, so <b>creating a new market is inevitable</b>.</p>
+<p>Second, <b>the interface between technology and marketing</b>. It is now extremely hard to draw attention just by satisfying needs, so marketers must understand innovations based on technology.</p>
+<p>Third, <b>the changes of customer attitudes</b>. The variance of perceived value is huge, and customers change dramatically over time, so <b>dynamic marketing</b> is needed.</p>
+<p>Fourth, <b>focusing on the product concept</b>. Most perceived value comes from product features, so marketing challenges come from unique product features.</p>
+<p>Fifth, <b>time is a major strategic resource</b>: first-mover advantage, the R&amp;D race, and time-to-market. OpenAI was not the most advanced firm, but it led the market by launching first.</p>
+<p>In short, traditional marketing is the <b>discovery</b> of an existing market and is <b>reactive</b>, while high-tech marketing is the <b>creation</b> of a new market, is <b>proactive</b>, and competes in a <b>blue ocean</b> that follows winner-take-all. Content is the same: even the best director cannot promise a hit.</p>`},
+
+{id:"1-4",ch:"1",pri:"A",g:"",sl:"CH01 S27–29",
+ q:"Explain the sources of technological uncertainty.",
+ ko:"기술적 불확실성의 원천.",
+ code:"기·부·서·납·구 = Function · Side-effects · Service · Delivery · Obsolete",
+ frame:"정의 → 5개 질문형 → 사례(영화·VR 멀미·납기·구식화) → hard to control: Galaxy Note 7",
+ ans:`<p>Technological uncertainty is <b>ambiguity about the extent of technological performance to keep the promise to customers</b>. There are <b>five sources</b>.</p>
+<p>First, <b>will the new product function as promised?</b> Even with the best director and actors, a film may not deliver the fun it promised. Second, <b>will there be any side-effects?</b> Early VR caused motion sickness, which slowed its adoption. Third, <b>will the vendor give high-quality service?</b> New products are unfamiliar, so customers need strong support. Fourth, <b>will the delivery time be met?</b> Developing new technology on schedule is hard. Fifth, <b>will new technology make ours obsolete?</b> A technology that was costly to develop can quickly become common.</p>
+<p>Technological uncertainty is <b>hard to control</b>. Samsung shortened the testing period of the Galaxy Note 7 to launch before the iPhone, and the batteries caught fire: pressure on delivery time caused problems in function and side-effects.</p>
+<p>Therefore, high-tech marketers must manage customers' expectations about performance, not just promote the product.</p>`},
+
+{id:"1-5",ch:"1",pri:"A",g:"",sl:"CH01 S24–26, 33",
+ q:"What is a high-tech product? Explain it with the two types of uncertainty (Moriarty and Kosnik, 1989).",
+ ko:"하이테크 제품이란? 두 불확실성 2x2로 설명.",
+ code:"쥐덫 = 기술↑ · 패션 = 시장↑ · 둘 다↑ = High-tech",
+ frame:"기술 수준이 아니라 불확실성 → 2x2 네 칸 + 사례 → 영역은 이동한다(아이폰)",
+ ans:`<p>A high-tech product is not defined only by advanced technology, R&amp;D spending, or industry. According to <b>Moriarty and Kosnik (1989)</b>, products are classified by <b>technological uncertainty</b> and <b>market uncertainty</b>.</p>
+<p>When both are low, it is <b>low-tech marketing</b>, such as air conditioners or furniture. When technological uncertainty is high but market uncertainty is low, it is <b>better mousetrap marketing</b>, such as the obesity drug Wegovy: everyone knows it will sell if it can be made. When technological uncertainty is low but market uncertainty is high, it is <b>high-fashion marketing</b>, such as clothing. When both are high, it is <b>high-tech marketing</b>, such as AI or a self-driving car.</p>
+<p>Content is also high-tech: nobody can promise a good film or know whether audiences will like it.</p>
+<p>A product does not stay high-tech forever. <b>When uncertainty is resolved, it moves back to traditional marketing.</b> The first iPhone was high-tech, but smartphones today are close to low-tech.</p>`},
+
+{id:"1-6",ch:"1",pri:"A",g:"",sl:"CH01 S38",
+ q:"Compare traditional marketing and high-tech marketing.",
+ ko:"전통적 마케팅 vs 하이테크 마케팅 8쌍 비교.",
+ code:"무엇 2 · 방식 2 · 동력 2 · 결과 2",
+ frame:"정의 → 8쌍을 네 묶음으로 → 핵심 사례(마차·카카오톡) → 시간",
+ ans:`<p>High-tech marketing is marketing for innovative products that create a new market. It differs from traditional marketing in <b>eight ways</b>.</p>
+<p><b>What it deals with:</b> traditional marketing deals with an <b>existing market</b> and <b>existing products</b>; high-tech marketing deals with a <b>new market</b> and <b>new products</b>.</p>
+<p><b>How it works:</b> traditional marketing is the <b>discovery of a market</b> based on <b>continuous innovation</b>; high-tech marketing is the <b>creation of a market</b> based on <b>discontinuous innovation</b> that asks for behavior change.</p>
+<p><b>What drives it:</b> traditional marketing follows <b>market pull</b> and is <b>reactive</b>; high-tech marketing needs <b>tech push and market pull</b> and must be <b>proactive</b>. If people had been asked before cars existed, they would have wanted "faster horses."</p>
+<p><b>The result:</b> traditional products have <b>long life cycles</b> in a <b>red ocean</b>, where firms hurt each other but rarely die. High-tech products have <b>short life cycles</b> in a <b>blue ocean</b> that follows winner-take-all, as KakaoTalk took almost the whole Korean messenger market.</p>
+<p>Therefore, high-tech marketers must lead customers and treat time as a strategic resource.</p>`},
+
+{id:"1-7",ch:"1",pri:"B",g:"",sl:"CH01 S31",
+ q:"Explain competitive volatility in the high-tech industry.",
+ ko:"경쟁 변동성 3가지.",
+ code:"누가 · 어떻게 · 무엇과",
+ frame:"세 원이 겹치는 곳 → 3 sources → 왜 문제인가 → Netflix vs Fortnite",
+ ans:`<p>High-tech marketing deals with products where <b>market uncertainty, technological uncertainty, and competitive volatility</b> overlap. Competitive volatility has <b>three sources</b>: <b>Who will be the new competition in the future? What competitive tactics will be used? What products will we compete with?</b></p>
+<p>This is a problem because marketing means making customers choose us instead of competitors. If a firm does not know its competitors, it cannot explain why it is better.</p>
+<p>For example, Netflix thought YouTube was its competitor, but when Netflix stopped working in the U.S., users moved to the game <b>Fortnite</b>. Its real competitor was games, so Netflix started making games. In high-tech industries, competition can come from a completely different category.</p>`},
+
+{id:"1-8",ch:"1",pri:"B",g:"",sl:"CH01 S5–9",
+ q:"Define marketing and explain the goals of marketing.",
+ ko:"마케팅 정의(Kotler·Winer)와 목표 3가지.",
+ code:"끌·키·되 = Attract · Keep & grow · Regain",
+ frame:"Not a function → Kotler/Winer → 목표 3 → regain = 포켓몬",
+ ans:`<p>Marketing is <b>not a function</b> such as advertising or sales. Kotler defines it as <b>managing profitable customer relationships</b>, by creating value for customers and building relationships. Russell Winer says marketing is involved <b>whenever an individual or organization has a choice to make</b>, so it is all the activities affecting customers' choice.</p>
+<p>Marketing has <b>three goals</b>. First, <b>attract new customers by promising superior value</b>. Second, <b>keep and grow current customers by delivering satisfaction</b>. Third, <b>regain customers who left by fixing the relationship</b>. For example, children who bought Pokémon goods leave as they grow up, but return in their twenties for premium goods and again as parents.</p>
+<p>Attracting customers is easy to notice, but keeping them is the basis of long-term profit.</p>`},
+
+/* ===== CH02 ===== */
+{id:"2-1",ch:"2",pri:"S",g:"★ 24·25 기출 (2년 연속)",sl:"CH02 S10–17",
+ q:"Explain the key engines to make winner-take-all mechanism in high-tech industry.",
+ ko:"승자독식의 개념과 주요 동력(엔진 6개).",
+ code:"No Lazy Student Can Skip Units",
+ frame:"increasing returns → \"six engines\" 목록 → 엔진마다 정의 1문장 + 사례 → time is the key factor",
+ ans:`<p>The high-tech industry follows the <b>law of increasing returns</b>: a company that is ahead in a market gets further ahead. This creates a <b>winner-take-all</b> mechanism, driven by <b>six key engines</b>: network externalities, learning by using, signaling, convergence, switching cost, and unique cost structures.</p>
+<p>First, <b>network externalities</b>: the value of a product increases as more people use it. KakaoTalk is valuable because all my friends are there, while joyn had no value because nobody was there.</p>
+<p>Second, <b>learning by using</b>: gains are generated by the subsequent use of the product. Once users get used to the iPhone interface, they keep buying iPhones.</p>
+<p>Third, <b>signaling</b>: under uncertainty, <b>the best-selling product itself is a signal of quality</b>. Many students use GPT simply because others use it.</p>
+<p>Fourth, <b>convergence (technological interrelatedness)</b>: products work as a system, like Apple products or Microsoft Office, so customers stay in the ecosystem.</p>
+<p>Fifth, <b>switching cost</b>: financial, procedural, and relational costs. Firms that acquired the installed base early can <b>lock in</b> the market.</p>
+<p>Sixth, <b>unique cost structures</b>: <b>high initial investment and low marginal cost</b>. An album costs the same whether 10,000 or one million people listen, so the hit takes far more than its share.</p>
+<p>Because of these engines, <b>time is the key factor</b>, and building the installed base early is critical.</p>`},
+
+{id:"2-2",ch:"2",pri:"A",g:"",sl:"CH02 S5–9",
+ q:"Compare the law of decreasing returns and the law of increasing returns.",
+ ko:"수확체감 vs 수확체증 (가구 vs 게임 계산).",
+ code:"$10M → 가구 $14M(+40%) vs 게임 $20M(+100%)",
+ frame:"두 법칙 정의 → 경쟁·경영 초점 대비 → 계산 예제 → Drucker's rule / 게임 산업",
+ ans:`<p>Under the <b>law of decreasing returns</b> (Marshall's economy), <b>companies that get ahead eventually run into limitations</b> such as capacity, labor, and raw materials. So the market is shared, competition is <b>zero-sum</b>, and the focus of management is <b>optimization</b>. Even if one car maker disappears, others cannot take all of its share.</p>
+<p>Under the <b>law of increasing returns</b> (new economy), <b>a company that is ahead gets further ahead</b>. One firm corners the market through <b>lock-in</b>, a <b>win-win strategy</b> is essential, and the focus is <b>adaption and the next big thing</b>.</p>
+<p>For example, a furniture maker and a game company both sell one million units at $100 and earn $10M. The furniture maker has a $60 variable cost and $30M fixed cost; the game company has no variable cost and $90M fixed cost. If sales rise 10%, furniture profit becomes <b>$14M (+40%)</b>, but game profit becomes <b>$20M (+100%)</b>.</p>
+<p>So winners grow faster, and latecomers must follow <b>Drucker's rule: be ten times better</b> than what they hope to displace.</p>`},
+
+{id:"2-3",ch:"2",pri:"A",g:"과거 중간고사에 배달통 사례 출제",sl:"CH02 S35–54",
+ q:"Explain the strategies of late movers in a winner-take-all market.",
+ ko:"후발주자 전략 5가지.",
+ code:"This Is Still Possible, Later = Time · Innovation · Switching cost · Power user · Local network",
+ frame:"선발주자가 항상 이기진 않음 → 5개 목록 → 각 핵심+사례 → change the game",
+ ans:`<p>In a winner-take-all market, the first mover does not always win. Late movers have <b>five strategies</b>: time, innovation, switching cost, power user, and local network.</p>
+<p>First, <b>time</b>. <b>Being the first developer is not enough.</b> Raytheon invented the microwave, but Samsung won the U.S. market by framing it as a tool for heating frozen food. A late mover can also fight early in the <b>battle zone</b> before the tipping point, or <b>change the domain</b>, as LINE moved to Japan when KakaoTalk dominated Korea.</p>
+<p>Second, <b>innovation</b>: take the <b>next big thing</b>. Google overtook Microsoft with search, and Kakao grew with mobile. Innovation can be product, process, or <b>business model</b> innovation, as Nexon overtook NCsoft.</p>
+<p>Third, <b>neutralize switching cost</b>. Excel copied Lotus 1-2-3's interface, opened Lotus files, and was cheaper. Daum moved Freechal cafés with all posts and members.</p>
+<p>Fourth, <b>power users</b>: experts who care only about performance, like DSLR or Linux users.</p>
+<p>Fifth, <b>local network</b>: a niche, younger age group, or another region, as Instagram and TikTok targeted younger users than Facebook.</p>
+<p>A late mover must <b>change the game</b> instead of competing head-on.</p>`},
+
+{id:"2-4",ch:"2",pri:"A",g:"",sl:"CH02 S34",
+ q:"Explain the first-mover disadvantages (late-mover advantages).",
+ ko:"선발주자의 불리함 4가지.",
+ code:"무임 · 해소 · 변화 · 관성",
+ frame:"선발주자가 항상 이기진 않음 → 4개 → 사례(Magnavox·NC소프트) → CH04 연결",
+ ans:`<p>The first mover does not always win. There are <b>four first-mover disadvantages</b>, which are late-mover advantages.</p>
+<p>First, <b>free-rider effects</b>: a late mover solves problems the first mover revealed. The first home console, Magnavox (1972), had only 11 games, and a later console with changeable cartridges took the market.</p>
+<p>Second, <b>resolution of technological and market uncertainty</b>: the first mover pays to educate the market, and the late mover enters after uncertainty is resolved.</p>
+<p>Third, <b>shift in technology or customer needs</b>: when technology or tastes change, the game opens again.</p>
+<p>Fourth, <b>incumbent inertia, or "producer lock-in"</b>: the first mover is trapped in its own way. Inside NCsoft, its own games always looked better. This is why large incumbents are vulnerable to disruptive innovation.</p>`},
+
+{id:"2-5",ch:"2",pri:"A",g:"",sl:"CH02 S18–28",
+ q:"Why is it critical to build the installed base early, and how can a firm do it?",
+ ko:"초기 installed base가 중요한 이유와 4가지 방법.",
+ code:"할·생·일·공 = Discount · Ecology · #1 · Free",
+ frame:"battle zone → tipping point → positive/negative feedback → social norm → path dependence → 4 ways",
+ ans:`<p>In a winner-take-all market, rivals first fight in a <b>battle zone</b>, but after the <b>tipping point</b> one moves toward 100% share and the other toward zero.</p>
+<p>A large installed base creates <b>positive feedback</b>: more users bring more adoption, which brings even more users. A small base creates <b>negative feedback</b>. This happens because, when accepting new technology, <b>customers consider both performance and the social norm, the activities of others, to reduce uncertainty</b>. Markets also show <b>path dependence</b>: QWERTY beat the faster Dvorak because typing schools got QWERTY typewriters for free.</p>
+<p>There are <b>four ways</b> to build the installed base early: <b>discounted pricing</b>, <b>constructing a mini-ecology to induce positive feedback</b>, <b>psychological positioning as #1</b>, and <b>freeconomics</b>. AI firms give free or discounted plans to students and advertise "the most downloaded app," and Baemin signed up restaurants before advertising to users.</p>
+<p>Finally, the <b>business model is crucial for maintaining the installed base</b>.</p>`},
+
+{id:"2-6",ch:"2",pri:"B",g:"",sl:"CH02 S11",
+ q:"Explain network externalities. How are they different from economies of scale?",
+ ko:"네트워크 외부성, 규모의 경제와 차이, direct vs indirect.",
+ code:"규모의 경제 = 비용(한계 있음) / 네트워크 효과 = 가치(계속 커짐)",
+ frame:"정의 → 규모의 경제와 차이 → externality인 이유 → direct(카톡)/indirect(배민·콘솔)",
+ ans:`<p>Network externality is the phenomenon in which <b>the value of a product increases as the network of users grows</b>. It is the <b>main driver of the law of increasing returns</b>.</p>
+<p>It is different from <b>economies of scale</b>, which are about <b>production cost</b>: unit cost falls as output grows, but beyond capacity it rises again. Network externalities are about <b>the value customers feel</b>, which keeps growing with more users. It is an externality because value changes from outside the transaction: when classmates buy phones, my phone becomes more valuable.</p>
+<p>A <b>direct</b> network effect comes from more users of the same kind, like KakaoTalk. An <b>indirect</b> effect comes from the other side: more Baemin users attract more restaurants, and more consoles attract more game developers, so consoles are even sold at a loss.</p>`},
+
+{id:"2-7",ch:"2",pri:"B",g:"",sl:"CH02 S29–33",
+ q:"Explain the key strategic insights of the winner-take-all market and its prerequisites.",
+ ko:"승자독식의 전략적 시사점 3 + 전제조건.",
+ code:"승자독식 · 빨리 · 다음 판 / Not all markets",
+ frame:"wind changes(샤오미) → casino economy → insights 3 → prerequisites",
+ ans:`<p>"When the wind changes, your big and beautiful business can evaporate instantly." Samsung ignored Xiaomi in China, but Xiaomi built an ecosystem and Samsung lost the market. This world is a <b>casino economy: all or nothing</b>.</p>
+<p>There are <b>three key strategic insights</b>. First, <b>a market under the law of increasing returns follows winner-takes-all</b>. Second, <b>build the initial user base as soon as possible and construct a positive feedback loop</b>. Third, <b>pursue the next big thing rather than effective management</b>; Baedaltong could not win just by running efficiently.</p>
+<p>However, the worlds of increasing and decreasing returns <b>cannot be separated clearly</b>, and <b>not all markets result in winner-take-all</b>. When smartphones became ordinary, competition moved toward normal manufacturing.</p>`},
+
+/* ===== CH03 ===== */
+{id:"3-1",ch:"3",pri:"S",g:"★ 25 기출",sl:"CH03 S8–23",
+ q:"Explain the technology adoption life cycle and the main sources of chasm.",
+ ko:"기술수용주기와 캐즘의 주요 원천.",
+ code:"2.5 · 13.5 · 34 · 34 · 16 + V vs P 8쌍",
+ frame:"Rogers 정의 → 5집단(비율·별칭·성향) → Moore의 chasm → visionaries vs pragmatists → VR",
+ ans:`<p>The technology adoption life cycle (<b>Everett Rogers, 1962</b>) shows that people adopt a discontinuous innovation at different speeds. There are <b>five groups</b>.</p>
+<p><b>Innovators (2–3%)</b> love technology itself; they are few, but their existence matters. <b>Early adopters (13.5%), the visionaries</b>, buy for future possibilities. <b>The early majority (34%), the pragmatists</b>, love track records and best-sellers, do not know technology, and need strong A/S and C/S. <b>The late majority (34%), the conservatives</b>, are risk-averse and price-sensitive. <b>Laggards (16%)</b> naturally hate technology.</p>
+<p><b>Geoffrey Moore (1991)</b> found a <b>chasm</b> between the early market and the mainstream market. Its main source is the gap between <b>visionaries and pragmatists</b>. Visionaries are <b>intuitive</b>, love <b>innovations</b>, <b>go out of herds</b>, act on <b>their own judgement</b>, are <b>risk-takers</b>, and look at <b>future opportunities</b>. Pragmatists are <b>analytic</b>, love <b>evolutions</b>, like to be <b>in herds</b>, follow <b>others' guides</b>, <b>minimize risk</b>, and focus on <b>current issues</b>. Visionaries see pragmatists as losers; pragmatists see visionaries as gangsters.</p>
+<p>So word-of-mouth does not pass between the two groups, and a product built for visionaries, like VR, cannot answer the pragmatist's question, "How does it help me?" Sales suddenly stop.</p>`},
+
+{id:"3-2",ch:"3",pri:"S",g:"★ 24 기출(응용형)",sl:"CH03 S30–47",
+ q:"How can a high-tech firm cross the chasm?",
+ ko:"캐즘을 어떻게 건너는가.",
+ code:"Five Very Wise Chasm Escapes = Focus · Value triad · Whole product · Competition positioning · Elevator test",
+ frame:"흔한 반응 3은 실패 → focus → attack point → whole product → positioning → elevator test → bowling alley",
+ ans:`<p>To cross the chasm, a firm must win the <b>pragmatists</b>. The typical reactions, <b>mass marketing, developing new products, and changing the price</b>, all fail, because pragmatists buy only when people like them use the product.</p>
+<p>The answer is <b>"Focus, focus, and focus"</b>: <b>focusing just one niche market in the mainstream</b>, because satisfying the whole mainstream is almost impossible for a new player. The Apple Watch first won swimmers, who could not take a phone into the pool, and Interpark started online shopping with tickets and books.</p>
+<p>To find the attack point, the firm uses <b>informed intuition</b> and the <b>value triad</b> (customer, product, application) with <b>scenario analysis</b>. It must deliver a <b>whole product</b>, from generic to expected, augmented, and potential product, because pragmatists do not know technology.</p>
+<p>It also needs <b>competition positioning</b>, defining its own battle field, and must pass the <b>elevator test</b>: "For (target) who have (needs), our product is a (category) that provides (benefit). Unlike (competitor), our product is (differentiator)."</p>
+<p>Once one segment is won, nearby segments fall like <b>bowling pins</b>, leading to the tornado.</p>`},
+
+{id:"3-3",ch:"3",pri:"A",g:"",sl:"CH03 S25–29",
+ q:"Explain the conditions for success in the early market.",
+ ko:"초기 시장 성공 조건: 필요조건 3 + 충분조건 3, FUD.",
+ code:"WIKi (필요) + PEF (충분)",
+ frame:"necessary 3 → sufficient 3 (positioning·expectation·FUD) → Google Glass",
+ ans:`<p>A new product needs <b>three necessary conditions</b> and <b>three sufficient conditions</b> to succeed in the early market.</p>
+<p>The necessary conditions are <b>a breakthrough technology (WOW factor)</b>, <b>the existence of innovators</b>, and <b>a killer application for early adopters</b>.</p>
+<p>The sufficient conditions are, first, <b>positioning and framing</b>: Samsung framed the microwave as a tool for heating frozen food. Second, <b>expectation management and word-of-mouth marketing</b>: satisfaction depends on whether performance exceeds expectation, so the firm should set expectations a little lower than it can deliver. Third, <b>eliminating FUD factors</b>: <b>fear</b> about learning, additional cost, and privacy; <b>uncertainty</b> about price, service, and standard; and <b>doubt</b> about functions and quality.</p>
+<p><b>Google Glass</b> met the necessary conditions but failed the sufficient ones. Its camera created fear about privacy, and users were seen as potential criminals.</p>`},
+
+{id:"3-4",ch:"3",pri:"B",g:"",sl:"CH03 S4–7",
+ q:"Compare continuous innovation and discontinuous innovation.",
+ ko:"연속적 vs 불연속적 혁신.",
+ code:"혜·기·행 — 차이는 행(behavior change)",
+ frame:"혁신 3차원 → continuous 정의·사례 → discontinuous 정의·사례 → 캐즘 연결",
+ ans:`<p>Innovation has <b>three dimensions</b>: product benefit, technological capability, and <b>behavior change</b>. The key difference between the two types is behavior change.</p>
+<p><b>Continuous innovation does not change behavior</b> and is based on the existing product, like a refrigerator that saves 5% of electricity or the change from the Pony to the Sonata.</p>
+<p><b>Discontinuous innovation asks for behavior change and creates a new market</b>, like the first iPhone in 2007, which even the Wall Street Journal underestimated.</p>
+<p>If it succeeds, the firm takes the whole new market, but changing behavior is extremely hard, which is why discontinuous innovations face a chasm.</p>`},
+
+{id:"3-5",ch:"3",pri:"B",g:"",sl:"CH03 S41–45",
+ q:"What is a whole product, and why do pragmatists need it? Write an elevator test.",
+ ko:"Whole product 4층과 엘리베이터 테스트.",
+ code:"기본·기대·증강·잠재 / For–who have–our product is–that provides–Unlike–is",
+ frame:"정의 → 4층 → pragmatist 성향 → GPT → elevator test 문장",
+ ans:`<p>A whole product is <b>the complete solution for the target customers</b>. It has four layers: the <b>generic</b> product, the <b>expected</b> product, the <b>augmented</b> product, and the <b>potential</b> product.</p>
+<p>Visionaries accept incomplete products and fix them, but pragmatists <b>do not know technology</b> and have strong needs for A/S and C/S. GPT could not even read PDF files at first; as it learned to read, write, and order, it became a complete solution and spread.</p>
+<p>The <b>elevator test</b> checks if the firm can explain its target and value quickly: "<b>For</b> swimmers <b>who have</b> no way to record training in the pool, <b>our product is</b> a wearable device <b>that provides</b> automatic lap and stroke tracking. <b>Unlike</b> ordinary waterproof watches, <b>our product</b> analyzes the data with the user's phone."</p>`},
+
+{id:"3-6",ch:"3",pri:"B",g:"",sl:"CH03 S46–52",
+ q:"Explain the bowling alley and the tornado stages.",
+ ko:"볼링 앨리와 토네이도.",
+ code:"보상 2 · 실패 3 / 펭귄 효과 · Just ship",
+ frame:"bowling alley 정의·보상·실패 → tornado = penguin effect → key 3 → gorilla",
+ ans:`<p>The <b>bowling alley</b> is the essential process to move from the chasm to the tornado. When one segment falls, the next falls like a bowling pin, as the Apple Watch moved from swimmers to runners to general users. It gives <b>two rewards</b>, money and credit &amp; reputation, and fails when the firm <b>rushes into new markets</b>, is <b>satisfied in the niche</b>, or <b>adds too many functions</b>.</p>
+<p>In the <b>tornado</b>, demand explodes. Its main reason is the same as the chasm's: the <b>penguin effect</b>. Pragmatists move together. The key strategies are <b>gathering customers</b>, <b>supplying ("Just ship!")</b>, and <b>standardization and simplification</b>.</p>
+<p>After the tornado, the winner becomes the <b>gorilla</b> with the de facto standard, while others remain chimpanzees or low-cost monkeys.</p>`},
+
+/* ===== CH04 ===== */
+{id:"4-1",ch:"4",pri:"S",g:"★ 25 기출",sl:"CH04 S5–17",
+ q:"Explain why large firms are usually vulnerable to disruptive innovation.",
+ ko:"대기업이 파괴적 혁신에 취약한 이유.",
+ code:"고·작·분·다 (dilemma 4) + 안·위·주·준 (lies 4)",
+ frame:"정의 + overshooting → innovator's dilemma 4 (코닥·NC) → common lies 4 → 조직 문제 → independent org",
+ ans:`<p>A disruptive innovation <b>starts by addressing a low-end or overlooked segment and eventually upends the established market</b> with a simpler, more affordable, or more accessible solution (Christensen). Its performance is worse at first, so large firms ignore it and keep improving performance, which leads to <b>overshooting</b>. The <b>innovator's dilemma</b> gives <b>four reasons</b>.</p>
+<p>First, <b>companies depend on customers and investors for resources</b>. Kodak's film customers asked for better film, so Kodak buried the digital camera it invented.</p>
+<p>Second, <b>small markets don't solve the growth needs of large companies</b>. The whole mobile game market was smaller than one NCsoft PC game, so NCsoft ignored it; later mobile game firms were worth three times more.</p>
+<p>Third, <b>markets that don't exist can't be analyzed</b>. Large firms need sales forecasts, but new markets have no numbers.</p>
+<p>Fourth, <b>not all emerging markets prosper</b>. There are too many "world-changing" technologies to invest in all of them.</p>
+<p>Managers also tell <b>common lies</b>: "We are stable and safe," "It is too risky to invest," "Shareholders will not allow it," and "We are not ready." The organization rewards the existing business, so good people avoid new teams. Seagate gave up its 3.5-inch drive to protect its 5.25-inch business.</p>
+<p>Therefore, a large firm should <b>place the disruptive business in an independent organization</b> with different evaluation criteria.</p>`},
+
+{id:"4-2",ch:"4",pri:"A",g:"",sl:"CH04 S5–11",
+ q:"What is disruptive innovation? Compare it with sustaining innovation.",
+ ko:"파괴적 혁신 정의, 존속적 혁신과 비교, 특징 4.",
+ code:"싸·쉽·작·편 + overshooting",
+ frame:"Christensen 정의 → sustaining vs disruptive → overshooting → 특징 4 → 사례",
+ ans:`<p>According to <b>Clayton Christensen</b>, disruptive innovation is <b>a process by which a product, service, or business model starts by addressing a low-end or overlooked market segment and eventually upends the established market</b> by providing a solution that is <b>simpler, more affordable, or more accessible</b>.</p>
+<p><b>Sustaining technologies</b> increase the performance of existing products. <b>Disruptive technologies</b> have worse performance at least in the near term, but <b>create a new market through new values</b>.</p>
+<p>Leaders keep improving until their performance exceeds what most customers need (<b>overshooting</b>), while the disruptive product improves from below and takes the market. Disruptive products are usually <b>cheap, simple, small, and convenient</b>.</p>
+<p>The first iPhone camera was far worse than a digital camera, but instant sharing removed the camera market. Amazon's Kindle had a poor screen, but gave instant books to Americans far from bookstores.</p>`},
+
+{id:"4-3",ch:"4",pri:"A",g:"",sl:"CH04 S28–40",
+ q:"Explain the major weapons and tactics in the standard war.",
+ ko:"표준 전쟁의 무기 7 + 전술 4.",
+ code:"3I + FMCB / P·P·E·P",
+ frame:"weapons 7 → Sony vs SD → tactics 4 (각 예) → Gopher vs HTTP → after war",
+ ans:`<p>In a standard war there are <b>seven major weapons</b>: <b>control over an installed base</b>, <b>intellectual property rights</b>, <b>ability to innovate</b>, <b>first-mover advantages</b>, <b>manufacturing abilities</b>, <b>strength in complements</b>, and <b>brand name and reputation</b>. Sony's Memory Stick lost because of weak manufacturing and high license fees, while the open SD card gained strength in complements.</p>
+<p>There are <b>four major tactics</b>. <b>Preemption</b>: build an early lead so positive feedback works for you. <b>Penetration pricing</b>: be aggressive in building the installed base, as consoles are sold below cost. <b>Expectation management</b>: pre-announcing and fast improvement, so customers wait instead of buying the rival's product. <b>Strategic partnership</b>: find natural allies, as firms agreed on USB-C.</p>
+<p>Gopher came first but lost to the free HTTP. After winning, a firm should encourage competition in complements, like Intel, and look out for the next wave.</p>`},
+
+{id:"4-4",ch:"4",pri:"B",g:"",sl:"CH04 S17–19",
+ q:"What can large firms do against disruptive innovation, and what is the winning strategy for innovators?",
+ ko:"대기업 대응 5단계 + 혁신가의 승리 전략.",
+ code:"D-D-L-P-K / low-end · no cannibalization · start small",
+ frame:"대기업 5 → 혁신가: low-end + KSF 3 + production + investment",
+ ans:`<p>A large firm can respond in <b>five steps</b>: <b>determine</b> whether the technology is disruptive or sustaining, <b>define</b> its strategic significance, <b>locate</b> the initial market, <b>place</b> responsibility in an <b>independent organization</b>, and <b>keep</b> it independent with different evaluation criteria.</p>
+<p>Small innovators should <b>target the low-end market</b>. Key success factors are a <b>clearly existing potential market</b>, <b>no cannibalization</b> of the leader's products so it does not respond, and <b>independent marketing and distribution channels</b>. In production, launching speed and flexibility matter, so outsourcing beats vertical integration. In investment, <b>start early, start small, demand early success</b>, and <b>avoid short-term investors</b>. Nexon made a profit from its second year, while WeMade could not stop failing projects because of its stock price.</p>`},
+
+{id:"4-5",ch:"4",pri:"B",g:"",sl:"CH04 S35–36",
+ q:"How does a standard change the game, and how are standards determined?",
+ ko:"표준이 게임을 바꾸는 4가지 + 결정 방식 5가지.",
+ code:"네·불·믹·규 / 내·합·국·정·시",
+ frame:"표준 정의 → 4 effects → 5 ways(사례) → 승자독식의 기반",
+ ans:`<p>A standard is something everyone can use together, such as a plug or file format, and it is very hard to change once set.</p>
+<p>It changes the game in <b>four ways</b>: <b>efficiency or expanded network externalities</b> through compatibility; <b>reduced uncertainty</b>; <b>variety from mix and match</b>, so firms compete within the market instead of for the market; and <b>economy of scale and lower learning cost</b>.</p>
+<p>Standards are determined in <b>five ways</b>: <b>internal decision</b> (KEPCO's 110V to 220V), <b>mutual agreement</b>, <b>international standard organizations</b> (ISO), <b>government intervention</b> (the EU's USB-C rule), and <b>market competition</b>, which creates a <b>de facto standard</b> like HTTP.</p>`},
+
+{id:"4-6",ch:"4",pri:"B",g:"",sl:"CH04 S20–25",
+ q:"Explain the types of disruption and reverse innovation.",
+ ko:"Low-end vs new-market disruption, reverse innovation 3원칙.",
+ code:"더 좋게·더 싸게·안 쓰던 사람 / 기술X·시장X·쉽고 싸게",
+ frame:"sustaining → low-end → new-market → big bang 예외 → reverse innovation 3 + 사례",
+ ans:`<p>A <b>sustaining strategy</b> brings a better product into an established market. <b>Low-end disruption</b> addresses <b>overserved customers</b> with a lower-cost business model, while <b>new-market disruption</b> competes against <b>nonconsumption</b>. <b>Big bang disruption</b>, where a product jumps straight to the vast majority like ChatGPT, is very exceptional.</p>
+<p><b>Reverse innovation</b> <b>excludes technology uncertainty</b> by using only proven technologies, <b>excludes market uncertainty</b> by focusing on less developed countries, and <b>makes easy and cheap products</b>. GE made AA-battery medical devices for India, Tata made the $3,000 Nano, and Honda replaced the $2,100 Dream with the $732 Wave in Vietnam.</p>`},
+
+/* ===== CH05 ===== */
+{id:"5-1",ch:"5",pri:"A",g:"신규 챕터",sl:"CH05 S6–12",
+ q:"What is a platform? Explain its strategic meaning and key success factors.",
+ ko:"플랫폼의 정의, 전략적 의미 3, 핵심 성공요인 3.",
+ code:"리더·성장·락인 / P·U·E",
+ frame:"platform war 인용 → 정의 → strategic meaning 3 → KSF 3 + 사례 → 4 steps",
+ ans:`<p>"The game has changed from a battle of devices to a <b>war of ecosystems</b>." A platform is <b>a framework that encapsulates core values and creates value through interconnectivity</b> between internal and external parties, and among external parties, <b>as a business ecosystem</b>.</p>
+<p>A platform has <b>three strategic meanings</b>: it is a <b>source of market leadership</b>, it brings <b>sustainable growth</b>, and it creates <b>positive feedback and lock-in through the winner-take-all mechanism</b>. Most of the world's top companies by market value today are platform companies.</p>
+<p>There are <b>three key success factors</b>. First, <b>innovative and differentiated products</b> that create exclusive value through proprietary technology, like Google Maps and Gmail. Second, <b>rapid user base acquisition</b> to secure market dominance and brand power, like Facebook and Netflix. Third, an <b>ecosystem</b>: a pricing and revenue model (business model innovation), and <b>catalyst products, two-sided markets, and indirect network effects</b>, like the App Store and KakaoTalk.</p>
+<p>To become a platform company, a firm needs distinctive products and many customers, a business model that creates and shares value, quick conversion of customers into platform users, and <b>prevention of imitation in advance</b>.</p>`},
+
+{id:"5-2",ch:"5",pri:"A",g:"신규 챕터",sl:"CH05 S13–20",
+ q:"Explain the multi-sided market platform and the strategic decisions it requires.",
+ ko:"다면 시장 플랫폼 정의와 전략적 의사결정 4가지.",
+ code:"몇·뭘·누구 돈·룰",
+ frame:"Rochet & Tirole 정의 → catalyst·indirect NE → 4 decisions → subsidy 표 사례",
+ ans:`<p>A two-sided or multi-sided platform is <b>a technology, product, or service that creates value by enabling two or more groups to interact directly with each other</b> (Rochet and Tirole). In a reseller model, this direct interaction is blocked. It grows through a <b>catalyst product</b> and the <b>indirect network effect</b>: a game console attracts users, which attracts game developers.</p>
+<p>It requires <b>four strategic decisions</b>. First, <b>how many groups (sides)</b>: more sides bring cross-network effects and diverse revenue, but also conflicts of interest. Second, <b>what value to provide</b>: Airbnb reduces searching cost and eBay reduces transaction cost. Third, <b>from which group to earn profit first</b>: who receives subsidies depends on <b>price sensitivity, quality sensitivity, and network effects within the group</b>. Fourth, <b>what rules</b>: quality management and participation conditions.</p>
+<p>For example, game consoles subsidize users and earn from developers, and media subsidize users and earn from advertisers, while PC operating systems subsidize application developers and earn from users.</p>`},
+
+{id:"5-3",ch:"5",pri:"B",g:"신규 챕터",sl:"CH05 S15–16",
+ q:"Compare a pure reseller and a multi-sided platform. When is each better?",
+ ko:"재판매 vs 다면 플랫폼, 각각 유리한 조건.",
+ code:"통·수·재·경·실 (reseller) / 고객+공급자 · 외부 상호작용 (multi-sided)",
+ frame:"차이(직접 상호작용) → reseller 5 조건 → multi-sided 2 조건 → 스펙트럼 사례",
+ ans:`<p>A <b>pure reseller</b> buys and resells products, so suppliers and consumers do not interact directly. A <b>multi-sided platform</b> lets them interact directly. Retailers range from Costco (reseller) to eBay (multi-sided), and Amazon sits in between.</p>
+<p>The <b>reseller is better</b> when <b>control over the product is highly needed</b>, when there is <b>high demand</b>, when the product has <b>high resale value</b>, when <b>supplier and user experience</b> is important, and when there is a <b>possibility of market failure</b>.</p>
+<p>The <b>multi-sided platform is better</b> when there is a <b>sufficient customer base and suppliers interested in them</b> (QuickBooks), and when <b>distinct customer groups already interact outside the company's domain</b> (Garmin Connect).</p>`},
+
+{id:"5-4",ch:"5",pri:"A",g:"신규 챕터",sl:"CH05 S21–26",
+ q:"Explain the growth strategy for platforms: the chicken-and-egg problem, network characteristics, and platform scaling.",
+ ko:"닭과 달걀 문제, 네트워크 특성 5, 플랫폼 스케일링.",
+ code:"공급자 → 경험 → 때·장소 / SC-DMB / 복잡↑+위험↑만 천천히",
+ frame:"chicken-and-egg → 3 steps → network 5 (Airbnb vs Uber) → scaling 2x2 (Libra)",
+ ans:`<p>A new platform faces the <b>chicken-and-egg problem</b>: which side to secure first. The answer is to <b>prioritize the service side, but select the right service providers</b>. The three steps are <b>selecting the right providers</b>, <b>providing a better experience</b>, and <b>finding the optimal time and place</b>.</p>
+<p>Platform success depends on <b>five network characteristics</b>: <b>strength of network effects</b>, <b>network clustering</b>, <b>risk of disintermediation</b>, <b>vulnerability to multi-homing</b>, and <b>network bridging</b>. Airbnb's network is global, since travelers in one city want hosts in every city, so it is more defensible. Uber's network is split into local clusters, so local rivals can attack it, and drivers and riders easily use several apps (multi-homing).</p>
+<p><b>Platform scaling</b> depends on <b>regulatory complexity</b> and <b>regulatory risk</b>. A platform can scale quickly unless both are high; then it must <b>scale slowly</b>. Facebook's digital currency Libra tried to scale fast in finance, a high-complexity, high-risk area, and was abandoned after regulators opposed it.</p>`},
+
+{id:"5-5",ch:"5",pri:"B",g:"신규 챕터",sl:"CH05 S27",
+ q:"How can a company deal with powerful platforms?",
+ ko:"강력한 플랫폼에 대한 의존을 줄이는 4가지.",
+ code:"필·차·대·직",
+ frame:"플랫폼 의존 문제 → 4 ways + 슬라이드 사례",
+ ans:`<p>When a platform becomes powerful, suppliers become dependent on it. There are <b>four ways to reduce dependence on platform operators</b>.</p>
+<p>First, <b>exploit the need for completeness</b>: American Airlines operates routes that the travel platform Kayak cannot do without. Second, <b>identify and discredit discrimination</b>: call out discriminatory listings by eBay or Google and mobilize consumer pushback. Third, <b>support or create an alternative platform</b>: when MovieTickets gained influence, Regal Entertainment launched Fandango. Fourth, <b>deal more directly</b>: some restaurants run their own ordering apps instead of using GrubHub.</p>
+<p>In Korea, restaurants that build their own ordering channels to avoid delivery-app fees follow the same logic.</p>`},
+
+{id:"5-6",ch:"5",pri:"A",g:"신규 챕터",sl:"CH05 S28–40",
+ q:"Explain strategic partnership in the high-tech industry with good and bad cases.",
+ ko:"전략적 제휴: 관계 연속체, 제휴 목적, 좋은 파트너, Toyota–BMW vs Amazon–Toys\"R\"Us.",
+ code:"거래·서비스·파트너·합병 / 돈·기반·완제품·Wintel / 3R+2C",
+ frame:"continuum 4 → for what 4 → good(Toyota–BMW) → bad(Amazon–Toys\"R\"Us) → which partner 5",
+ ans:`<p>Firm relationships form a <b>continuum</b> (Dull, Mohn and Noren, 1995): <b>transactional</b> (straight sale), <b>serving</b> (relationship sale), <b>partnership</b> (mutual accommodation), and <b>unification</b> (merger).</p>
+<p>Firms partner for <b>four reasons</b>: <b>bottom-line synergies</b> in revenue or cost, <b>installed base or network effect</b>, making a <b>whole product</b>, and <b>value networking</b>, where partners integrate parts of their business systems into a platform and share the benefit, like <b>Wintel</b> (Windows + Intel).</p>
+<p>A good case is <b>Toyota and BMW</b>, which combined complementary capabilities in hybrid, fuel-cell, and sports-car technology and jointly developed a sports car platform. A bad case is <b>Amazon and Toys"R"Us</b>. In 2000, Toys"R"Us became the exclusive toy seller on Amazon and outsourced its online business, but Amazon, as a multi-sided platform, also let other sellers offer toys. The partners had a <b>conflict of interest</b>, the deal ended in a lawsuit, and Toys"R"Us lost years of e-commerce capability while Amazon built its own logistics power.</p>
+<p>So a firm should choose a partner by <b>resources, relationships, reputation, capabilities, and chemistry and culture</b>, and check whether their goals really match.</p>`},
+
+{id:"5-7",ch:"5",pri:"A",g:"신규 챕터",sl:"CH05 S41–46",
+ q:"Explain high-tech acquisitions and the key principles for successful M&A.",
+ ko:"A&D, 동기 3, Cisco Mario rule 5, Pitney Bowes 원칙, M&A의 초점 3.",
+ code:"속·비·규 / 3년·사람·가까이·3개월·6개월 / C·P·D",
+ frame:"A&D replaces R&D → motivation 3 → capabilities & people → Mario rule 5 → Pitney Bowes → focus 3",
+ ans:`<p>In high-tech, <b>A&amp;D (acquisition and development) replaces R&amp;D</b>. Firms acquire instead of researching for <b>three motivations</b>: <b>speed</b>, <b>cost</b>, and <b>scale (market dominance)</b>.</p>
+<p>To obtain real capabilities, the key words are <b>capabilities and people</b> (Chaudhuri and Tabrizi, 1999): <b>assess your needs, expand due diligence, and keep the new people</b>.</p>
+<p>Cisco's <b>Mario rule</b> has five principles: acquire only technology with <b>clear demand within three years</b>; acquire <b>both the technology and the people</b>; acquire companies <b>not far from headquarters</b>; acquire companies that can finish <b>integration within three months</b>; and acquire companies that can show <b>clear results within six months</b>.</p>
+<p>Pitney Bowes adds: acquire in <b>adjacent industries</b>, build a portfolio of <b>many small companies</b>, let <b>executives in charge</b> lead the process, use <b>separate evaluation criteria</b> for existing and new businesses, and <b>be cautious of acquisitions that cover poor performance</b>.</p>
+<p>In short, the focus of M&amp;A is <b>capability, people, and the actual situation (due diligence)</b>.</p>`},
+
+{id:"5-8",ch:"5",pri:"B",g:"24 기출 \"경쟁우위\" 대비",sl:"CH01 S34 · CH02 · CH04 S38 · CH05 S8",
+ q:"Explain the concept of competitive advantage and the strategies to build it in the high-tech industry.",
+ ko:"경쟁우위의 개념과 전략 (24년 기출 재출제 대비, 여러 챕터 통합).",
+ code:"차별화 → 시간·기반 → 표준 → 플랫폼 → 제휴·인수",
+ frame:"정의 → 전통(Porter) vs 하이테크(end of Porter) → 5가지 원천(챕터별) → 결론",
+ ans:`<p>Competitive advantage is <b>the ability to create more value for customers than competitors</b> and earn superior profit. In traditional markets it comes from Porter's strategies, such as low cost or differentiation in a stable market. In high-tech markets, the "divide and own" logic is weakening (<b>the end of Porter strategy</b>), so advantage must be built dynamically.</p>
+<p>First, <b>differentiated products and product concepts</b>, because most perceived value comes from product features. Second, <b>time and the installed base</b>: first-mover advantage and the six winner-take-all engines, especially network externalities and switching cost, create <b>lock-in</b>. Third, <b>standards</b>: winning a standard war with an installed base, complements, and partners makes the firm the de facto standard. Fourth, <b>platforms</b>, which are a source of market leadership and sustainable growth. Fifth, <b>partnerships and acquisitions</b> to add capabilities quickly.</p>
+<p>However, advantage in high-tech is temporary. "When the wind changes, your big and beautiful business can evaporate instantly," so firms must keep pursuing the next big thing.</p>
+<p class="note">이 주제는 슬라이드에 단독 목록이 없어 여러 챕터를 묶은 답안입니다. 교재에 경쟁우위 정의가 따로 있으면 첫 문장을 그것으로 바꾸세요.</p>`},
+
+/* ===== 분석형 ===== */
+{id:"A-1",ch:"A",pri:"S",g:"★ 24 기출 유형",sl:"CH03 S22–47 · CH01 S30",
+ q:"Your friend developed a tourism product using AI and brainwave technology. Give marketing advice to move from the early stage to the commercialization stage.",
+ ko:"AI·뇌파 관광 상품 친구에게 초기 → 상용화 조언 (24년 응용 그대로).",
+ code:"진단 → 캐즘 경고 → Focus → Whole product → FUD·기대 관리 → Elevator → Bowling",
+ frame:"Diagnosis → chasm → 조언 5개(focus, whole product, FUD, expectation, elevator) → bowling alley",
+ ans:`<p><span class="lab">Diagnosis</span>Your product is a <b>discontinuous innovation</b> with high technological and market uncertainty, so it is in the <b>high-tech</b> quadrant. Today your customers are <b>innovators and early adopters (visionaries)</b>. To commercialize, you must cross the <b>chasm</b> and win the <b>pragmatists</b>, who are analytic, minimize risk, and follow others.</p>
+<p><span class="lab">Advice 1</span>Do not react with mass marketing, new features, or price cuts. These <b>typical reactions</b> fail.</p>
+<p><span class="lab">Advice 2</span><b>Focus, focus, and focus</b> on one niche in the mainstream, for example stressed office workers who want a short "healing trip" whose effect is measured by brainwaves. Use the <b>value triad</b> of customer, product, and application.</p>
+<p><span class="lab">Advice 3</span>Deliver a <b>whole product</b>: partner with hotels and travel agencies, make the app simple, and offer A/S, because pragmatists do not know technology.</p>
+<p><span class="lab">Advice 4</span><b>Eliminate FUD</b>, especially fear about the privacy of brain data and doubt about the effect, with clear data rules and free trials. Use <b>expectation management</b>: promise a little less than you deliver, so satisfied users spread <b>word-of-mouth</b>.</p>
+<p><span class="lab">Advice 5</span>Pass the <b>elevator test</b>: "For office workers who have no time to rest, our tour is a one-day wellness trip that proves relaxation with brainwave data. Unlike ordinary spa tours, it is personalized by AI." After winning this niche, expand to nearby segments like <b>bowling pins</b>.</p>`},
+
+{id:"A-2",ch:"A",pri:"S",g:"★ 25 기출 유형 (Anthropic)",sl:"CH02 S35–54 · CH04 S35–39",
+ q:"Read the following article and analyze the decision of Anthropic. (예시: Anthropic released MCP as an open standard.)",
+ ko:"작년 지문 기업. 기사 내용은 바뀌어도 5단계 틀과 개념 연결은 같습니다.",
+ code:"Decision → Diagnosis(WTA, late mover) → Concepts(standard war, late mover) → Evaluation → Risk",
+ frame:"기사 속 결정 한 문장 → 시장 진단 → 개념 2–3개 이름 그대로 → 평가 → 위험·제언",
+ ans:`<p><span class="lab">Decision</span>Anthropic released the <b>Model Context Protocol (MCP)</b>, which connects AI models to apps and data, as a free <b>open standard</b>, and later donated it to a neutral foundation. OpenAI and Google also adopted it.</p>
+<p><span class="lab">Diagnosis</span>The AI market follows <b>winner-take-all</b>, and Anthropic was a <b>late mover</b> behind OpenAI, which had a huge installed base and strong <b>signaling</b>. Competing head-on with the same chatbot would be hard because of <b>Drucker's rule</b>.</p>
+<p><span class="lab">Concepts</span>Anthropic used a late-mover strategy of <b>changing the domain</b> to the connection between AI and tools, where no standard existed. It then used <b>standard war tactics</b>: being first was <b>preemption</b>, and making it free worked like <b>penetration pricing</b>. Unlike Sony's Memory Stick or Gopher, which tried to control their standards, an open format built <b>strength in complements</b>, and MCP became a <b>de facto standard</b>. A standard expands <b>network externalities</b> and <b>reduces uncertainty</b> for developers.</p>
+<p><span class="lab">Evaluation</span>The decision was wise: Anthropic gave up control but gained reputation and became the natural home of the standard.</p>
+<p><span class="lab">Risk</span>Rivals use the same standard, so Anthropic must keep winning with its <b>ability to innovate</b>.</p>`},
+
+{id:"A-3",ch:"A",pri:"A",g:"과거 중간고사 출제 사례",sl:"CH02 S8, S18, S35–54",
+ q:"Baedaltong, the first delivery app, fell to third place and announced it would overcome the gap with superior technology. Analyze this decision.",
+ ko:"배달통 사례. 교수님이 9.23 수업에서 \"예전 중간고사에 나왔다\"고 한 문제.",
+ code:"Tipping point 지남 → engines → Drucker 10배 → better mousetrap → 후발 전략",
+ frame:"Situation → Diagnosis → Concepts → Evaluation → Recommendation",
+ ans:`<p><span class="lab">Situation</span>Baedaltong was the first delivery app in Korea but fell to third place, with about one million users against Baemin's ten million. It announced it would win with superior technology.</p>
+<p><span class="lab">Diagnosis</span>The delivery app market follows <b>winner-take-all</b>, and Baemin had passed the <b>tipping point</b> by signing up restaurants first and then advertising.</p>
+<p><span class="lab">Concepts</span>Baemin enjoyed <b>indirect network externalities</b> (more users, more restaurants), <b>signaling</b> from its large user base, and users' <b>switching costs</b>. By <b>Drucker's rule</b>, a latecomer must be <b>ten times better</b>, and better technology alone cannot do that.</p>
+<p><span class="lab">Evaluation</span>The decision repeats the <b>better mousetrap fallacy</b>. Customers choose by perceived value and what others use. <b>Being the first developer is not enough.</b></p>
+<p><span class="lab">Recommendation</span>Baedaltong should <b>change the game</b>: neutralize switching costs, focus on a <b>local network</b> or niche where it can be number one, or find <b>business model innovation</b>.</p>`},
+
+{id:"A-4",ch:"A",pri:"A",g:"CH05 분석형 연습",sl:"CH05 S16–17, S27–39",
+ q:"Toys\"R\"Us signed an exclusive partnership with Amazon in 2000, but the partnership ended in a lawsuit and Toys\"R\"Us later went bankrupt. Analyze this decision.",
+ ko:"CH05 Bad Case(S32–39). 제휴·플랫폼 개념을 한 번에 연습.",
+ code:"continuum → for what(whole product) → conflict of interest(reseller vs multi-sided) → which partner → 플랫폼 의존",
+ frame:"Decision → Diagnosis → Concepts → Evaluation → Lesson",
+ ans:`<p><span class="lab">Decision</span>In 2000, Toys"R"Us signed a ten-year deal to be the exclusive toy seller on Amazon and handed its online business to Amazon.</p>
+<p><span class="lab">Concepts</span>On the <b>relationship continuum</b>, this was a <b>partnership</b> for a <b>whole product</b>: Toys"R"Us brought toy assortment and Amazon brought its website and logistics. But their logics clashed. Toys"R"Us wanted exclusivity like a <b>reseller</b>, while Amazon was becoming a <b>multi-sided platform</b> that wanted many sellers. This was a <b>conflict of interest</b> between platform sides, and Amazon let other sellers offer toys. Toys"R"Us sued and ended the deal, but it had already lost years of e-commerce capability.</p>
+<p><span class="lab">Evaluation</span>Toys"R"Us chose a partner with strong <b>resources and capabilities</b> but ignored <b>chemistry and culture</b> and goal fit. It also became dependent on a <b>powerful platform</b> instead of <b>dealing directly</b> with its own channel.</p>
+<p><span class="lab">Lesson</span>A firm should partner for real <b>value networking</b>, as Toyota and BMW combined complementary technologies, and never outsource its core future capability to a platform that may become its rival.</p>`},
+
+{id:"A-5",ch:"A",pri:"B",g:"CH05 분석형 연습",sl:"CH05 S23–26 · CH04 S39",
+ q:"Facebook announced a global digital currency, Libra, in 2019, but gave up the project. Analyze this case with the growth strategy for platforms.",
+ ko:"CH05 S26 슬라이드 사례. 규제가 나오는 기사에 그대로 응용.",
+ code:"KSF(user base 있음) → scaling 2x2(high/high) → partnership 붕괴 → 교훈",
+ frame:"Decision → Diagnosis → Concepts → Evaluation → Recommendation",
+ ans:`<p><span class="lab">Decision</span>Facebook planned Libra, a digital currency for its billions of users, with partners such as payment companies.</p>
+<p><span class="lab">Diagnosis</span>Facebook had one <b>key success factor</b>, a <b>huge user base</b>, and a payment system is a <b>multi-sided platform</b> linking users and companies.</p>
+<p><span class="lab">Concepts</span>However, in <b>platform scaling</b>, finance has both <b>high regulatory complexity and high regulatory risk</b>, the only quadrant that requires <b>scaling slowly</b>. Facebook tried to scale quickly and globally. Regulators opposed it, major partners left, and the <b>strategic partnership</b> that a standard needs collapsed. It also faced <b>government regulation</b> uncertainty (CH01).</p>
+<p><span class="lab">Evaluation</span>The idea used Facebook's network strength, but the timing and speed did not fit the regulatory environment.</p>
+<p><span class="lab">Recommendation</span>In high-risk, high-complexity fields, a platform should start small and work with regulators. This is an exception to the "build the installed base as soon as possible" rule.</p>`}
+];
+
+/* ---------- 렌더링 ---------- */
+const store={get(k){try{return JSON.parse(localStorage.getItem(k)||'null')}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let done=new Set(store.get('tem-done')||[]);
+let chSel='all', priSel='all', allOpen=false;
+
+const chFilter=document.getElementById('chFilter'), priFilter=document.getElementById('priFilter');
+const chOpts=[['all','전체'],['1','CH01'],['2','CH02'],['3','CH03'],['4','CH04'],['5','CH05'],['A','분석형']];
+const priOpts=[['all','전체 등급'],['S','S 기출·최우선'],['A','A 유력'],['B','B 대비']];
+function mkChips(root,opts,get,set){
+  root.innerHTML='';
+  for(const [v,l] of opts){
+    const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=l;
+    b.setAttribute('aria-pressed',String(get()===v));
+    b.addEventListener('click',()=>{set(v);mkChips(root,opts,get,set);render()});
+    root.appendChild(b);
+  }
+}
+mkChips(chFilter,chOpts,()=>chSel,v=>chSel=v);
+mkChips(priFilter,priOpts,()=>priSel,v=>priSel=v);
+
+const list=document.getElementById('list'), hideDone=document.getElementById('hideDone');
+hideDone.addEventListener('change',render);
+
+function render(){
+  list.innerHTML='';
+  const items=Q.filter(x=>(chSel==='all'||x.ch===chSel)&&(priSel==='all'||x.pri===priSel)&&!(hideDone.checked&&done.has(x.id)));
+  if(!items.length){list.innerHTML='<div class="empty">조건에 맞는 문항이 없습니다. 필터를 바꿔 보세요.</div>'}
+  for(const x of items){
+    const c=CH[x.ch];
+    const el=document.createElement('article');el.className='card'+(done.has(x.id)?' done':'');el.style.setProperty('--cc',c.col);
+    el.innerHTML=`
+      <div class="meta"><span class="pri ${x.pri}">${x.pri}</span><span class="chtag ${c.cls}">${x.ch==='A'?'분석형':'CH0'+x.ch}</span>
+        <span class="slides">${x.sl}</span>${x.g?`<span class="gichul">${x.g}</span>`:''}<span class="qid">#${x.id}</span></div>
+      <p class="q">${x.q}</p>
+      <p class="ko">${x.ko}</p>
+      <dl class="cue"><dt>암기 코드</dt><dd class="m">${x.code}</dd><dt>뼈대</dt><dd>${x.frame}</dd></dl>
+      <details class="ans"${allOpen?' open':''}><summary>모범답안 보기</summary><div class="answer">${x.ans}</div></details>
+      <div class="cardfoot"><label class="chk"><input type="checkbox" id="chk-${x.id}" ${done.has(x.id)?'checked':''}> 외웠어요</label></div>`;
+    el.querySelector('input').addEventListener('change',e=>{
+      e.target.checked?done.add(x.id):done.delete(x.id);store.set('tem-done',[...done]);
+      el.classList.toggle('done',e.target.checked);updateProgress();
+      if(hideDone.checked&&e.target.checked)render();
+    });
+    list.appendChild(el);
+  }
+  updateProgress();
+}
+function updateProgress(){
+  const s=Q.filter(x=>x.pri==='S');
+  document.getElementById('progress').innerHTML=`외운 문항 <b>${[...done].filter(id=>Q.some(q=>q.id===id)).length}</b> / ${Q.length} · S급 <b>${s.filter(x=>done.has(x.id)).length}</b> / ${s.length}`;
+}
+document.getElementById('openAll').addEventListener('click',e=>{
+  allOpen=!allOpen;document.querySelectorAll('details.ans').forEach(d=>d.open=allOpen);
+  e.target.textContent=allOpen?'답안 모두 접기':'답안 모두 펼치기';
+});
+render();
+</script>
+
+</body></html>
